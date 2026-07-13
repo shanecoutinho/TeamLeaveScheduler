@@ -1,0 +1,6 @@
+@LeaveScheduler.API_HostAddress = http://localhost:5083
+
+GET {{LeaveScheduler.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

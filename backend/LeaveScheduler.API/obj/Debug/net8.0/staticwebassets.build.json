@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "mtpMXvle4+gm5NxmI0755ET8fNSGfDDjyOTuwAtyPDk=",
+  "Source": "LeaveScheduler.API",
+  "BasePath": "_content/LeaveScheduler.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
