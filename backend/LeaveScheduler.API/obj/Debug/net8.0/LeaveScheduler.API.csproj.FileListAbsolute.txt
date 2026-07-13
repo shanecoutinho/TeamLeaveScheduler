@@ -133,3 +133,4 @@
 /home/seancoutinho/TeamLeaveScheduler/backend/LeaveScheduler.API/obj/Debug/net8.0/LeaveScheduler.API.genruntimeconfig.cache
 /home/seancoutinho/TeamLeaveScheduler/backend/LeaveScheduler.API/obj/Debug/net8.0/ref/LeaveScheduler.API.dll
 /home/seancoutinho/TeamLeaveScheduler/backend/LeaveScheduler.API/obj/Debug/net8.0/LeaveScheduler.API.sourcelink.json
+/home/seancoutinho/TeamLeaveScheduler/backend/LeaveScheduler.API/bin/Debug/net8.0/Data/SeedData/public_holidays.json

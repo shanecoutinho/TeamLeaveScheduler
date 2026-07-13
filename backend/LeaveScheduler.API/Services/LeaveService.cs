@@ -7,43 +7,48 @@ namespace LeaveScheduler.API.Services;
 public class LeaveService
 {
     private readonly AppDbContext _context;
+    private readonly PublicHolidayService _holidayService;
 
-    public LeaveService(AppDbContext context)
+    public LeaveService(
+        AppDbContext context,
+        PublicHolidayService holidayService)
     {
         _context = context;
+        _holidayService = holidayService;
     }
 
-    
     public int CalculateWorkingDays(DateOnly startDate, DateOnly endDate)
-{   if (endDate < startDate)
-{
-    throw new ArgumentException("End date cannot be before the start date.");
-}
-    int workingDays = 0;
-
-    for (var date = startDate; date <= endDate; date = date.AddDays(1))
     {
-        if (date.DayOfWeek != DayOfWeek.Saturday &&
-            date.DayOfWeek != DayOfWeek.Sunday)
+        if (endDate < startDate)
         {
-            workingDays++;
+            throw new ArgumentException("End date cannot be before the start date.");
         }
+
+        int workingDays = 0;
+
+        for (var date = startDate; date <= endDate; date = date.AddDays(1))
+        {
+            if (date.DayOfWeek != DayOfWeek.Saturday &&
+                date.DayOfWeek != DayOfWeek.Sunday &&
+                !_holidayService.IsPublicHoliday(date))
+            {
+                workingDays++;
+            }
+        }
+
+        return workingDays;
     }
 
-    return workingDays;
-    
-
-}
     public bool HasOverlappingLeave(
-    int employeeId,
-    DateOnly startDate,
-    DateOnly endDate)
-{
-    return _context.LeaveRequests.Any(request =>
-        request.EmployeeId == employeeId &&
-        request.Status == LeaveStatus.Approved &&
-        startDate <= request.EndDate &&
-        endDate >= request.StartDate
-    );
+        int employeeId,
+        DateOnly startDate,
+        DateOnly endDate)
+    {
+        return _context.LeaveRequests.Any(request =>
+            request.EmployeeId == employeeId &&
+            request.Status == LeaveStatus.Approved &&
+            startDate <= request.EndDate &&
+            endDate >= request.StartDate
+        );
+    }
 }
-}   

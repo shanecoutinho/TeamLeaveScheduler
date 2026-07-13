@@ -14,6 +14,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
         builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<LeaveService>();
+builder.Services.AddSingleton<PublicHolidayService>();  
 
 var app = builder.Build();
 
