@@ -1,4 +1,4 @@
-        using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 using LeaveScheduler.API.Models.Enums;
 
 namespace LeaveScheduler.API.Models;
