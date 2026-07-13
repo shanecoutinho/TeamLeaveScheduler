@@ -8,7 +8,7 @@ public class Employee
 
     [Required]
     [MaxLength(100)]
-    public String Fullname {get;set;   } = string.Empty;
+    public string FullName {get;set;   } = string.Empty;
     [Phone]
     public string PhoneNumber { get; set; } = string.Empty;
 
