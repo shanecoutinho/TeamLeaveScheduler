@@ -34,5 +34,16 @@ public class LeaveService
     
 
 }
-    
+    public bool HasOverlappingLeave(
+    int employeeId,
+    DateOnly startDate,
+    DateOnly endDate)
+{
+    return _context.LeaveRequests.Any(request =>
+        request.EmployeeId == employeeId &&
+        request.Status == LeaveStatus.Approved &&
+        startDate <= request.EndDate &&
+        endDate >= request.StartDate
+    );
+}
 }   
