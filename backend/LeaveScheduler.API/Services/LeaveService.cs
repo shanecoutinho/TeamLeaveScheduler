@@ -102,6 +102,54 @@ public class LeaveService
 public async Task<LeaveRequest> SubmitLeaveRequest(
     CreateLeaveRequestDto request)
 {
-    throw new NotImplementedException();
-}
+    // Check employee exists
+    var employee = await _context.Employees.FindAsync(request.EmployeeId);
+
+    if (employee == null)
+    {
+        throw new Exception("Employee not found.");
+    }
+
+    // Validate dates
+    if (request.EndDate < request.StartDate)
+    {
+        throw new Exception("End date cannot be before the start date.");
+    }
+
+    // Check overlapping approved leave
+    if (HasOverlappingLeave(employee.Id, request.StartDate, request.EndDate))
+    {
+        throw new Exception("Employee already has approved leave during this period.");
+    }
+
+    // Check team capacity
+    if (IsTeamCapacityExceeded(employee.TeamId, request.StartDate, request.EndDate))
+    {
+        throw new Exception("Team leave capacity exceeded.");
+    }
+
+    // Calculate working days
+    int workingDays = CalculateWorkingDays(request.StartDate, request.EndDate);
+
+    if (workingDays <= 0)
+    {
+        throw new Exception("Leave request contains no working days.");
+    }
+
+    // Create leave request
+    var leaveRequest = new LeaveRequest
+    {
+        EmployeeId = employee.Id,
+        StartDate = request.StartDate,
+        EndDate = request.EndDate,
+        LeaveReason = request.LeaveReason,
+        Status = LeaveStatus.Pending
+    };
+
+    _context.LeaveRequests.Add(leaveRequest);
+
+    await _context.SaveChangesAsync();
+
+    return leaveRequest;
+}   
 }

@@ -14,4 +14,19 @@ public class LeaveController : ControllerBase
     {
         _leaveService = leaveService;
     }
+
+    [HttpPost]
+    public async Task<IActionResult> SubmitLeaveRequest(CreateLeaveRequestDto request)
+    {
+        try
+        {
+            var leaveRequest = await _leaveService.SubmitLeaveRequest(request);
+
+            return Ok(leaveRequest);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
 }
