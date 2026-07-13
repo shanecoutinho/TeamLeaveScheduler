@@ -132,3 +132,4 @@
 /home/seancoutinho/TeamLeaveScheduler/backend/LeaveScheduler.API/obj/Debug/net8.0/LeaveScheduler.API.pdb
 /home/seancoutinho/TeamLeaveScheduler/backend/LeaveScheduler.API/obj/Debug/net8.0/LeaveScheduler.API.genruntimeconfig.cache
 /home/seancoutinho/TeamLeaveScheduler/backend/LeaveScheduler.API/obj/Debug/net8.0/ref/LeaveScheduler.API.dll
+/home/seancoutinho/TeamLeaveScheduler/backend/LeaveScheduler.API/obj/Debug/net8.0/LeaveScheduler.API.sourcelink.json

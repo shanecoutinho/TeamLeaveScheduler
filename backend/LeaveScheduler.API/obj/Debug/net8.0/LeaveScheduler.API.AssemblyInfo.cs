@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LeaveScheduler.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ed07b3ff04ce4999dd7bb277e6277a1c957a5117")]
 [assembly: System.Reflection.AssemblyProductAttribute("LeaveScheduler.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LeaveScheduler.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
