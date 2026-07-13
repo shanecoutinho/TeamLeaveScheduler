@@ -6,6 +6,13 @@ public class PublicHolidayService
 {
     private readonly HashSet<DateOnly> _holidays;
 
+    // Constructor used in unit tests
+    public PublicHolidayService(HashSet<DateOnly> holidays)
+    {
+        _holidays = holidays;
+    }
+
+    // Constructor used by the application
     public PublicHolidayService()
     {
         var filePath = Path.Combine(AppContext.BaseDirectory, "Data", "public_holidays.json");

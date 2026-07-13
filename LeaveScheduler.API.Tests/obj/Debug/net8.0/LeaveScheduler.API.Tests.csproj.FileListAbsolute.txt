@@ -146,3 +146,4 @@
 /home/seancoutinho/TeamLeaveScheduler/LeaveScheduler.API.Tests/obj/Debug/net8.0/LeaveScheduler.API.Tests.pdb
 /home/seancoutinho/TeamLeaveScheduler/LeaveScheduler.API.Tests/obj/Debug/net8.0/LeaveScheduler.API.Tests.genruntimeconfig.cache
 /home/seancoutinho/TeamLeaveScheduler/LeaveScheduler.API.Tests/obj/Debug/net8.0/ref/LeaveScheduler.API.Tests.dll
+/home/seancoutinho/TeamLeaveScheduler/LeaveScheduler.API.Tests/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.InMemory.dll
