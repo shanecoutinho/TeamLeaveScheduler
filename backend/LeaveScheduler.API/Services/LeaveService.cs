@@ -2,6 +2,7 @@ using LeaveScheduler.API.Data;
 using LeaveScheduler.API.Models;
 using LeaveScheduler.API.Models.Enums;
 using Microsoft.EntityFrameworkCore;
+using LeaveScheduler.API.DTOs;  
 
 namespace LeaveScheduler.API.Services;
 
@@ -96,5 +97,11 @@ public class LeaveService
     }
 
     return false;
+}
+
+public async Task<LeaveRequest> SubmitLeaveRequest(
+    CreateLeaveRequestDto request)
+{
+    throw new NotImplementedException();
 }
 }
