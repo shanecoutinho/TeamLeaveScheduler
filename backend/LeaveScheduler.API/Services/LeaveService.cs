@@ -173,5 +173,44 @@ public async Task<LeaveRequest> ApproveLeaveRequest(int leaveRequestId)
 
     return leaveRequest;
 }
+public async Task<LeaveRequest> RejectLeaveRequest(
+    int leaveRequestId,
+    string rejectionReason)
+{
+    var leaveRequest = await _context.LeaveRequests.FindAsync(leaveRequestId);
+
+    if (leaveRequest == null)
+    {
+        throw new Exception("Leave request not found.");
+    }
+
+    if (leaveRequest.Status != LeaveStatus.Pending)
+    {
+        throw new Exception("Only pending leave requests can be rejected.");
+    }
+
+    leaveRequest.Status = LeaveStatus.Rejected;
+    leaveRequest.RejectionReason = rejectionReason;
+
+    await _context.SaveChangesAsync();
+
+    return leaveRequest;
+}
+
+public async Task<List<LeaveRequest>> GetAllLeaveRequests()
+{
+    return await _context.LeaveRequests
+        .Include(l => l.Employee)
+        .ThenInclude(e => e.Team)
+        .ToListAsync();
+}
+
+public async Task<LeaveRequest?> GetLeaveRequestById(int id)
+{
+    return await _context.LeaveRequests
+        .Include(l => l.Employee)
+        .ThenInclude(e => e.Team)
+        .FirstOrDefaultAsync(l => l.Id == id);
+}
 
 }
