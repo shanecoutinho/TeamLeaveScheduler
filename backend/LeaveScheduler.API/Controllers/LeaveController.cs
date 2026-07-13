@@ -29,4 +29,18 @@ public class LeaveController : ControllerBase
             return BadRequest(ex.Message);
         }
     }
+    [HttpPut("{id}/approve")]
+public async Task<IActionResult> ApproveLeaveRequest(int id)
+{
+    try
+    {
+        var leaveRequest = await _leaveService.ApproveLeaveRequest(id);
+
+        return Ok(leaveRequest);
+    }
+    catch (Exception ex)
+    {
+        return BadRequest(ex.Message);
+    }
+}
 }

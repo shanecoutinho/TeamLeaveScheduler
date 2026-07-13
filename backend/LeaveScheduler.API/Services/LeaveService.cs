@@ -151,5 +151,27 @@ public async Task<LeaveRequest> SubmitLeaveRequest(
     await _context.SaveChangesAsync();
 
     return leaveRequest;
+
 }   
+public async Task<LeaveRequest> ApproveLeaveRequest(int leaveRequestId)
+{
+    var leaveRequest = await _context.LeaveRequests.FindAsync(leaveRequestId);
+
+    if (leaveRequest == null)
+    {
+        throw new Exception("Leave request not found.");
+    }
+
+    if (leaveRequest.Status != LeaveStatus.Pending)
+    {
+        throw new Exception("Only pending leave requests can be approved.");
+    }
+
+    leaveRequest.Status = LeaveStatus.Approved;
+
+    await _context.SaveChangesAsync();
+
+    return leaveRequest;
+}
+
 }
